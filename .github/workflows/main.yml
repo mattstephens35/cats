@@ -1,5 +1,7 @@
 name: api-tests
-on: []
+
+on: workflow_dispatch
+
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
@@ -10,4 +12,3 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           start: npm start
-          
