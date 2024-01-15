@@ -12,3 +12,5 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           start: npx cypress run
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
