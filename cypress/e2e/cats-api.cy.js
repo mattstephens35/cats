@@ -7,6 +7,7 @@ describe('cats-api tests', () => {
       this.data = data;
     })
   })
+  
   it('GET /cats by name', function () {
     cy.request({
         method: 'GET',
@@ -33,6 +34,31 @@ describe('cats-api tests', () => {
       expect(catBody.min_life_expectancy).to.equal(this.data.min_life_expectancy)
       expect(catBody.max_life_expectancy).to.equal(this.data.max_life_expectancy)
       expect(catBody.name).to.equal(this.data.name)
+     })
+  })
+
+  it('GET /cats with invalid x-api-key', function () {
+    cy.request({
+        method: 'GET',
+        headers: { 'x-api-key': '1234' },
+        url: baseUrl,
+        failOnStatusCode: false
+    }).then((response) => {
+      expect(response.status).to.eq(400)
+     })
+  })
+
+  it('GET /cats by name when it is not found', function () {
+    cy.request({
+        method: 'GET',
+        headers: { 'x-api-key': apiKey },
+        url: baseUrl,
+        qs: {
+          "name": "not found"
+        } 
+    }).then((response) => {
+      expect(response.status).to.eq(200)
+      expect(response.body.length).to.eq(0)
      })
   })
 })  
