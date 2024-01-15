@@ -1,4 +1,5 @@
 const apiKey = 'ncTBJBpHnBt15D/K38UgDA==XncB5bK0GjNYLtNg'
+const baseUrl = 'https://api.api-ninjas.com/v1/cats'
 
 describe('cats-api tests', () => {
   before(function () {
@@ -10,7 +11,7 @@ describe('cats-api tests', () => {
     cy.request({
         method: 'GET',
         headers: { 'x-api-key': apiKey },
-        url: 'https://api.api-ninjas.com/v1/cats',
+        url: baseUrl,
         qs: {
           "name": this.data.name
         } 
