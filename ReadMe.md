@@ -16,4 +16,4 @@ Test reports are stored in cypress/reports/
 
 ## GitHub Actions
 
-Run the tests through GitHub Actions using Actions -> cypress-run
+Run the tests through GitHub Actions using Actions -> api-tests
